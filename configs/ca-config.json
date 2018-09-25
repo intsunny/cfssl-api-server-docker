@@ -1,0 +1,24 @@
+{
+  "signing": {
+    "default": {
+      "expiry": "720h"
+    },
+    "profiles": {
+      "intermediate": {
+        "usages": ["cert sign", "crl sign"],
+        "expiry": "720h",
+        "ca_constraint": {"is_ca": true}
+      },
+      "server": {
+        "expiry": "720h",
+        "usages": ["signing", "key encipherment", "server auth"],
+        "name_whitelist": ".*\\.foo$|.*\\.bar$"
+      },
+      "client": {
+        "expiry": "720h",
+        "usages": ["signing", "key encipherment", "client auth"],
+        "name_whitelist": ".*\\.foo$|.*\\.bar$"
+      }
+    }
+  }
+}
