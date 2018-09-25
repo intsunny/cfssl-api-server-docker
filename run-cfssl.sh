@@ -1,7 +1,10 @@
 #!/bin/sh
 
-echo "Create prod database"
+echo "Update configs"
+/usr/bin/envsubst < /cfssl-server/configs/ca_csr.json | /usr/bin/tee /cfssl-server/configs/ca_csr.json > /dev/null
+/usr/bin/envsubst < /cfssl-server/configs/ca-config.json | /usr/bin/tee /cfssl-server/configs/ca-config.json > /dev/null
 
+echo "Create prod database"
 /root/go/bin/goose -env production -path /root/go/src/github.com/cloudflare/cfssl/certdb/sqlite up
 
 if [ -f /cfssl-server/root_ca.csr ] && [ -f root_ca.pem ] && [ -f root_ca-key.pem ] ; then
