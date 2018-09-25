@@ -1,18 +1,18 @@
 {
-  "CN": "CFSSL CA",
+  "CN": "$CA_CN",
   "key": {
-    "algo": "rsa",
-    "size": 4096
+    "algo": "$CA_KEY_ALGO",
+    "size": $CA_KEY_SIZE
   },
   "names": [
     {
-      "C": "DE",
-      "L": "Berlin",
-      "O": "Engineering",
-      "OU": "SRE"
+      "C": "$CA_NAMES_C",
+      "L": "$CA_NAMES_L",
+      "O": "$CA_NAMES_O",
+      "OU": "$CA_NAMES_OU"
     }
   ],
   "ca": {
-    "expiry": "87600h"
+    "expiry": "$CA_EXPIRY"
   }
 }

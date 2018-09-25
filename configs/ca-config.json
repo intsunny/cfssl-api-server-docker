@@ -1,23 +1,23 @@
 {
   "signing": {
     "default": {
-      "expiry": "720h"
+      "expiry": "$CA_SIGNING_EXPIRY_DEFAULT"
     },
     "profiles": {
       "intermediate": {
+        "expiry": "$CA_SIGNING_EXPIRY_INTERMEDIATE",
         "usages": ["cert sign", "crl sign"],
-        "expiry": "720h",
         "ca_constraint": {"is_ca": true}
       },
       "server": {
-        "expiry": "720h",
+        "expiry": "$CA_SIGNING_EXPIRY_SERVER",
         "usages": ["signing", "key encipherment", "server auth"],
-        "name_whitelist": ".*\\.foo$|.*\\.bar$"
+        "name_whitelist": "$CA_SIGNING_SERVER_NAME_WHITELIST"
       },
       "client": {
-        "expiry": "720h",
+        "expiry": "$CA_SIGNING_EXPIRY_CLIENT",
         "usages": ["signing", "key encipherment", "client auth"],
-        "name_whitelist": ".*\\.foo$|.*\\.bar$"
+        "name_whitelist": "$CA_SIGNING_CLIENT_NAME_WHITELIST"
       }
     }
   }
